@@ -1,0 +1,17 @@
+.img-bg-post{
+  opacity: 0.5;
+  filter: blur(3px);
+}
+.blog-footer {
+    padding: 0.6rem 0;
+    color: #999;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-top: .05rem solid #e5e5e5;
+}
+.blog-footer>p{
+    padding-top: 10px;
+}
+.bg-post{
+background-color: #455A64;
+}
