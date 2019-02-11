@@ -5,7 +5,7 @@ router.get('/', (req, res) => {
     return res.render('home');
 });
 router.get('/post/:postName', (req, res) => {
-    return res.send('post');
+    return res.render('post');
 });
 
 module.exports = router;
