@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
-var UserSchema = mongoose.Schema({
+var catSchema = mongoose.Schema({
     category: String,
     categoryId: mongoose.Schema.Types.ObjectId
 });
 
-module.exports = mongoose.model('Category', UserSchema);
+module.exports = mongoose.model('Category', catSchema);
