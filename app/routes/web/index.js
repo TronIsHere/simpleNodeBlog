@@ -61,6 +61,7 @@ router.get('/save', (req, res) => {
 });
 router.get('/post/:postName', (req, res) => {
     Post.findOne({slug:req.params.postName},(err,content)=>{
+
         if(err) throw err;
         return res.render('post',{
             post:content
