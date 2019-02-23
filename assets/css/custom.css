@@ -34,3 +34,20 @@ background-color: #455A64;
   line-height: 1;
   border-bottom: 1px solid rgb(229, 229, 229);
 }
+.head{
+  background-color: #353E44;
+}
+.head > .nav{
+ padding: 15px;
+
+}
+.head > .nav > .nav-item > a{
+  color: white;
+  font-family: 'Open Sans';
+ }
+.head > .nav > .nav-item {
+  margin-right: 15px;
+ }
+.head > .nav > .nav-item:hover {
+  background-color: #FFB74D;
+ }
