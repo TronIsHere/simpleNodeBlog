@@ -28,5 +28,11 @@ router.post('/dashboard/posts/add', (req, res) => {
             res.redirect('/admin/dashboard/posts')
         })
 });
-
+router.get('/dashboard/posts/delete/:id', (req, res) => {
+        let id = req.params.id;
+        Post.findByIdAndRemove(id, function (err, post) {
+            if (err) throw err;
+            res.redirect('/admin/dashboard/posts')
+        });
+});
 module.exports = router;
