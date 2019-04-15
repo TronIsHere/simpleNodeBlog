@@ -13,5 +13,20 @@ router.get('/dashboard/posts', (req, res) => {
         });
     })
 });
+router.get('/dashboard/posts/add', (req, res) => {
+        res.render('admin/newPost');
+});
+router.post('/dashboard/posts/add', (req, res) => {
+        let newPost = new Post({
+            title:req.body.title,
+            content:req.body.content,
+            slug:req.body.slug,
+            img:'https://roocket.ir/public/image/2018/1/21/1516505980bootstrap4-cover-1.jpg'
+        });
+        newPost.save((err)=>{
+            if(err) throw(err);
+            res.redirect('/admin/dashboard/posts')
+        })
+});
 
 module.exports = router;

@@ -21,13 +21,14 @@
                 <tr>
                   <td><%= post.title %></td>
                   <td>
-                      <a href="http://localhost:3000/admin/dashboard/posts/edit/<%-post._id%>"><button type="button" class="btn btn-primary">edit</button></a>
+                      <a href="http://localhost:3000/admin/dashboard/posts/edit/<%-post._id%>"><button type="button" class="btn btn-primary">Edit</button></a>
                       <a href="http://localhost:3000/admin/dashboard/posts/delete/<%-post._id%>"><button type="button" class="btn btn-danger">Delete</button></a>
                   </td>
                 </tr>
                 <%});%>
             </tbody>
           </table>
+          <a href="http://localhost:3000/admin/dashboard/posts/add"><button type="button" class="btn btn-success">New Post</button></a>
    </div>
   </div>
         <script src="../../assets/js/bootstrap.js"></script>
