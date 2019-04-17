@@ -19,7 +19,7 @@
             <tbody>
               <%posts.forEach((post)=>{%>
                 <tr>
-                  <td><%= post.title %></td>
+                  <td><a href="http://localhost:3000/post/<%= post.slug %>"><%= post.title %></td></a>
                   <td>
                       <a href="http://localhost:3000/admin/dashboard/posts/edit/<%-post._id%>"><button type="button" class="btn btn-primary">Edit</button></a>
                       <a href="http://localhost:3000/admin/dashboard/posts/delete/<%-post._id%>"><button type="button" class="btn btn-danger">Delete</button></a>
