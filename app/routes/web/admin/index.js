@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Post = require('../../../models/post');
+const Category = require('../../../models/Category');
 const multer = require('multer');
 var globalname;
 // var storage = multer.diskStorage({
@@ -38,23 +39,60 @@ router.get('/dashboard/posts', (req, res) => {
         });
     })
 });
+router.get('/dashboard/categories', (req, res) => {
+    Category.find({},(err,item)=>{
+        if(err) throw err;
+        return res.render('admin/categories',{
+            categories:item
+        });
+    })
+});
+router.get('/dashboard/categories/add', (req, res) => {
+    res.render('admin/newCategory');
+});
+router.post('/dashboard/categories/add', (req, res) => {
+    let newCategory = new Category({
+        categoryName:req.body.name
+    });
+    newCategory.save((err)=>{
+        if(err) throw(err);
+        res.redirect('/admin/dashboard/categories')
+    })
+});
+router.get('/dashboard/categories/delete/:id', (req, res) => {
+    let id = req.params.id;
+    Category.findByIdAndRemove(id, function (err, post) {
+        if (err) throw err;
+        res.redirect('/admin/dashboard/categories')
+    });
+});
 router.get('/dashboard/posts/add', (req, res) => {
-        res.render('admin/newPost');
+        Category.find({},(err,item)=>{
+            if(err) throw err;
+            return res.render('admin/newPost',{
+                categories:item
+            });
+        })
 });
 router.post('/dashboard/posts/add', (req, res) => { //deleted upload.single('ImageFile') because in localhost we cant use local image like in the online sites
         console.log(req.body.title);
-        console.log(req.body.imageUrl);
+        console.log(req.body.selectCat);
+        let category = Category.findById(req.body.selectCat,(err,item)=>{
+            console.log(item)
         let newPost = new Post({
             title:req.body.title,
             content:req.body.content,
             slug:req.body.slug,
-            img:req.body.imageUrl
+            img:req.body.imageUrl,
+            category:req.body.selectCat
         });
         newPost.save((err)=>{
             if(err) throw(err);
+            item.posts.push(newPost._id);
+            item.save();
             res.redirect('/admin/dashboard/posts')
         });
-        
+    });
 });
 router.get('/dashboard/posts/delete/:id', (req, res) => {
         let id = req.params.id;

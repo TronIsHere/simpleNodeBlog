@@ -5,15 +5,10 @@ const Post = require('../../models/post');
 router.get('/', (req, res) => {
     Post.find({},(err,post)=>{
         if(err) throw err;
-        
         return res.render('home',{
             posts:post.reverse()
         });
     })
-   
-});
-router.get('/save', (req, res) => {
-    
 });
 router.get('/post/:postName', (req, res) => {
     Post.findOne({slug:req.params.postName},(err,content)=>{
