@@ -5,8 +5,9 @@ const Post = require('../../models/post');
 router.get('/', (req, res) => {
     Post.find({},(err,post)=>{
         if(err) throw err;
+        
         return res.render('home',{
-            posts:post
+            posts:post.reverse()
         });
     })
    
