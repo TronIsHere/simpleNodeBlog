@@ -1,13 +1,18 @@
 const express = require('express');
 const router = express.Router();
-const Post = require('../../models/post');
+const Category = require('./../../models/category');
+const Post = require('./../../models/post');
 
 router.get('/', (req, res) => {
     Post.find({},(err,post)=>{
         if(err) throw err;
-        return res.render('home',{
-            posts:post.reverse()
-        });
+        Category.find({},(err,categories)=>{
+            if(err) throw err;
+            return res.render('home',{
+                categories:categories,
+                posts:post.reverse()
+            });
+        })
     })
 });
 router.get('/post/:postName', (req, res) => {

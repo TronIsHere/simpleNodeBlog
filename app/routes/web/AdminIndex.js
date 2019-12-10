@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Post = require('../../../models/post');
-const Category = require('../../../models/Category');
+const Category = require('./../../models/category');
+const Post = require('./../../models/post');
 const multer = require('multer');
 var globalname;
 // var storage = multer.diskStorage({
