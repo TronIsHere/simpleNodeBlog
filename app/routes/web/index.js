@@ -37,5 +37,21 @@ router.get('/post/:postName', (req, res) => {
         });
     })
 });
+router.get('/search',async (req,res)=>{
+    let searchValue = req.body.search;
+    // let t = 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aspernatur, hic, quidem tempora obcaecati, eos numquam mollitia quibusdam iusto harum doloribus quia expedita odio. Iure ratione amet quae fugiat commodi.';
+    let query= {};
+    query.title = new RegExp(req.query.search,'gi');
+    Post.find({...query},(err,post)=>{
+        if(err) throw err;
+        Category.find({},(err,categories)=>{
+            if(err) throw err;
+            return res.render('home',{
+                categories:categories,
+                posts:post.reverse()
+            });
+        })
+    })
+});
 
 module.exports = router;
