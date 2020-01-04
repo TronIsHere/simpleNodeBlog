@@ -7,4 +7,4 @@ a simple blog with node and express
 - [x] add panel admin
 - [ ] add comment section
 - [x] add category
-- [*] Search option
+- [x] Search option
