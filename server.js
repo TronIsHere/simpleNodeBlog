@@ -18,7 +18,8 @@ app.set('view engine', 'ejs');
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/simpleBlog',{useNewUrlParser:true});
 
-app.use('/' , Routers);
+app.use(require('./app/routes'));
+app.use(require('./app/routes/api/forwardapi'));
 
 app.listen(config.port , () => {
     console.log(`Server running at Port ${config.port}`)
