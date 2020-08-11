@@ -3,9 +3,12 @@ a simple blog with node and express
 
 # TODOS
 
-- [x] add date
-- [x] add panel admin
-- [ ] add comment section
-- [x] add api
-- [x] add category
+- [x] Add date
+- [x] Add panel admin
+- [x] Add api
+- [x] Add category
 - [x] Search option
+- [ ] Add comment section
+- [ ] Authentication
+- [ ] Refactor
+- [ ] Test
