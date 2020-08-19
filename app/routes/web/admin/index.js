@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const Category = require('./../../models/category');
-const Post = require('./../../models/post');
+const Category = require('./../../../models/category');
+const Post = require('./../../../models/post');
 const multer = require('multer');
+const dashboardController = require('./../../../http/controllers/admin/dashboardController')
 var globalname;
 // var storage = multer.diskStorage({
 //     destination: function (req, file, cb) {
@@ -28,9 +29,7 @@ var globalname;
 // var upload = multer({
 //     storage: storage
 // });
-router.get('/dashboard', (req, res) => {
-     res.render('admin/index');
-});
+router.get('/dashboard',dashboardController.index);
 router.get('/dashboard/posts', (req, res) => {
     Post.find({},(err,post)=>{
         if(err) throw err;
