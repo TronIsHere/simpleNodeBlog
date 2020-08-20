@@ -10,5 +10,5 @@ a simple blog with node and express
 - [x] Search option
 - [ ] Add comment section
 - [ ] Authentication
-- [ ] Refactor
+- [X] Refactor
 - [ ] Test
