@@ -31,7 +31,7 @@ module.exports = class Application {
         app.set('view engine', 'ejs');
     }
     setRoutes(){
-        app.use(require('./routes'));
+        app.use(require('./routes/routeSplitter'));
     }
 }
 
