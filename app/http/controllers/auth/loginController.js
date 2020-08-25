@@ -1,6 +1,8 @@
 const Category = require('./../../../models/category');
 const Post = require('./../../../models/post');
 const Controller = require('./../Controller');
+const User = require('./../../../models/user');
+const { use } = require('passport');
 
 class LoginController extends Controller{
     index(req, res){
@@ -15,7 +17,13 @@ class LoginController extends Controller{
        return res.redirect('/login');
     }
     login(req,res){
-        res.json(req.body);
+        User.findOne({email:req.body.email},(err,user)=>{
+            if(err) throw err;
+            if(req.body.password == user.password){
+                return res.redirect('/');
+            }
+            
+        });
     }
 }
 module.exports = new LoginController();

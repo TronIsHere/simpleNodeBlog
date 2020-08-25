@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 // const Post = require('./post');
-const catSchema = mongoose.Schema({
+const userSchema = mongoose.Schema({
     name: {
         type: String,
         require: true
@@ -18,4 +18,4 @@ const catSchema = mongoose.Schema({
     }
 }, {timestamps: true});
 
-module.exports = mongoose.model('Category', catSchema);
+module.exports = mongoose.model('User', userSchema);
